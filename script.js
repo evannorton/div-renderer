@@ -28,6 +28,18 @@ class Renderer {
             }
         }
     }
+    drawRectangle = (startX, startY, width, height) => {
+        if (startX + width > this.width || startY + height > this.height) {
+            throw new Error("Rectangle out of bounds");
+        }
+        else {
+            for (let y = startY; y < startY + height; y++) {
+                for (let x = startX; x < startX + width; x++) {
+                    this.element.children[x].children[y].style.backgroundColor = "rgba(255,255,255,1)";
+                }
+            }
+        }
+    }
 }
 
 const element = document.getElementById("renderer");
