@@ -28,14 +28,14 @@ class Renderer {
             }
         }
     }
-    drawRectangle = (startX, startY, width, height) => {
+    drawRectangle = (color, startX, startY, width, height) => {
         if (startX + width > this.width || startY + height > this.height) {
             throw new Error("Rectangle out of bounds");
         }
         else {
             for (let y = startY; y < startY + height; y++) {
                 for (let x = startX; x < startX + width; x++) {
-                    this.element.children[x].children[y].style.backgroundColor = "rgba(255,255,255,1)";
+                    this.element.children[x].children[y].style.backgroundColor = color;
                 }
             }
         }
@@ -48,6 +48,7 @@ const renderer = new Renderer(element, 3, 304, 240);
 
 const loop = () => {
     renderer.clear();
+    renderer.drawRectangle("gray", 0, 0, 304, 240);
     requestAnimationFrame(loop);
 };
 
